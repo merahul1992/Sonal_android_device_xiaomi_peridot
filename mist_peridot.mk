@@ -8,8 +8,8 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit some common crdroid stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common mist stuff.
+$(call inherit-product, vendor/mist/config/common_full_phone.mk)
 
 # Inherit from peridot device
 $(call inherit-product, device/xiaomi/peridot/device.mk)
@@ -20,20 +20,14 @@ $(call inherit-product-if-exists, vendor/bcr/bcr.mk)
 # Inherit from the MiuiCamera setup
 $(call inherit-product-if-exists, device/xiaomi/peridot-miuicamera/device.mk)
 
-# GMS
-ifeq ($(WITH_GMS),true)
-$(call inherit-product, vendor/gms/gms_full.mk)
-endif
-
-PRODUCT_NO_CAMERA := true
-TARGET_BUILD_DEVICE_AS_WEBCAM := true
-TARGET_DISABLE_EPPE := true
-TARGET_ENABLE_BLUR := true
-TARGET_SUPPORTS_64_BIT_APPS := true
-TARGET_EXCLUDES_AUDIOFX := true
+WITH_GAPPS := true
+TARGET_HAS_UDFPS := true
+EXTRA_UDFPS_ANIMATIONS := true
+MIST_MAINTAINER := "Rahul Patel"
 TARGET_BOOT_ANIMATION_RES := 1080
 
-PRODUCT_NAME := lineage_peridot
+
+PRODUCT_NAME := mist_peridot
 PRODUCT_DEVICE := peridot
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_BRAND := POCO
